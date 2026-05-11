@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Lexicon — A Living Dictionary of the Crypto Age</title>
+<meta name="description" content="A collection of 6,666 NFTs — each one a single word from the language of the blockchain era, rendered as a luminous artifact.">
+
+<!-- Favicon (inline SVG, no extra file needed) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23050507'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Georgia,serif' font-size='36' font-style='italic' font-weight='600' fill='url(%23g)'%3ECL%3C/text%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff66cc'/%3E%3Cstop offset='0.5' stop-color='%23aa44ff'/%3E%3Cstop offset='1' stop-color='%2300ffff'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crypto Lexicon — A Living Dictionary of the Crypto Age">
+<meta property="og:description" content="A collection of 6,666 NFTs — each one a single word from the language of the blockchain era, rendered as a luminous artifact.">
+<meta property="og:site_name" content="Crypto Lexicon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@cryptolexiconX">
+<meta name="twitter:title" content="Crypto Lexicon — A Living Dictionary of the Crypto Age">
+<meta name="twitter:description" content="A collection of 6,666 NFTs — each one a single word from the language of the blockchain era, rendered as a luminous artifact.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050507;
+    --bg-elev: #0a0a0f;
+    --ink: #f0f0f2;
+    --ink-dim: #888894;
+    --ink-faint: #444450;
+    --line: rgba(255,255,255,0.08);
+    --line-strong: rgba(255,255,255,0.18);
+    --cyan: #00ffff;
+    --magenta: #ff00aa;
+    --pink: #ff66cc;
+    --purple: #aa44ff;
+    --gold: #ffd166;
+    --acid: #aaff00;
+    --grad: linear-gradient(135deg, #ff66cc 0%, #aa44ff 50%, #00ffff 100%);
+    --serif: 'Fraunces', Georgia, serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 400;
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Noise overlay for film grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+  }
+
+  /* ============ NAV ============ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(5,5,7,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  nav .logo { font-weight: 700; color: var(--ink); }
+  nav .logo span { color: var(--cyan); }
+  nav ul { display: flex; gap: 28px; list-style: none; }
+  nav a { color: var(--ink-dim); text-decoration: none; transition: color 0.2s; }
+  nav a:hover { color: var(--ink); }
+  nav .mint-cta {
+    padding: 8px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+    color: var(--cyan);
+    transition: all 0.3s;
+  }
+  nav .mint-cta:hover { background: var(--cyan); color: #000; border-color: var(--cyan); }
+
+  /* ============ HERO ============ */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 40px 60px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 1100px;
+    pointer-events: none;
+  }
+
+  /* ============ PREVIEW ============ */
+  #preview {
+    border-top: 1px solid var(--line);
+    padding: 100px 0 0;
+    overflow: hidden;
+  }
+  .preview-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+  }
+  .preview-desc {
+    font-size: 18px;
+    color: var(--ink-dim);
+    max-width: 640px;
+    line-height: 1.6;
+    margin-top: -20px;
+  }
+  #preview-canvas {
+    width: 100%;
+    height: 70vh;
+    min-height: 480px;
+    position: relative;
+    background: radial-gradient(ellipse at center, #0a0a12 0%, #050507 70%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  #preview-canvas canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '—'; opacity: 0.4; margin: 0 12px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 9vw, 140px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.5s forwards;
+  }
+  h1 .italic {
+    font-style: italic;
+    font-weight: 400;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-desc {
+    font-size: clamp(16px, 1.4vw, 20px);
+    line-height: 1.6;
+    color: var(--ink-dim);
+    max-width: 620px;
+    margin: 0 auto 48px;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+  .hero-meta span { color: var(--ink); }
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--ink-faint);
+    z-index: 2;
+    animation: bob 2s infinite;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ============ SECTIONS ============ */
+  section {
+    padding: 120px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: ''; width: 40px; height: 1px; background: var(--cyan);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 60px;
+    max-width: 900px;
+  }
+  .section-title em {
+    font-style: italic;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* ============ MANIFESTO ============ */
+  #manifesto {
+    border-top: 1px solid var(--line);
+  }
+  .manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .manifesto-text p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .manifesto-text p:last-child { color: var(--ink-dim); font-size: 17px; }
+  .manifesto-text em {
+    font-style: italic;
+    color: var(--cyan);
+  }
+  .manifesto-aside {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--ink-dim);
+    border-left: 1px solid var(--line-strong);
+    padding-left: 32px;
+  }
+  .manifesto-aside .key { color: var(--cyan); text-transform: uppercase; letter-spacing: 2px; font-size: 10px; display: block; margin-bottom: 4px; }
+  .manifesto-aside .row { margin-bottom: 20px; }
+  .manifesto-aside .val { color: var(--ink); }
+  .manifesto-aside .val em {
+    font-style: normal;
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* ============ PANTHEON ============ */
+  #pantheon { background: var(--bg-elev); max-width: none; padding-left: 0; padding-right: 0; }
+  #pantheon .inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .filter-chip {
+    padding: 8px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    color: var(--ink-dim);
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+  }
+  .filter-chip:hover { color: var(--ink); border-color: var(--ink); }
+  .filter-chip.active {
+    background: var(--ink);
+    color: #000;
+    border-color: var(--ink);
+  }
+  .filter-chip .count { opacity: 0.5; margin-left: 6px; }
+  .filter-chip.active .count { opacity: 0.6; }
+  .words-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .word-cell {
+    background: var(--bg-elev);
+    padding: 24px 18px;
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .word-cell:hover {
+    background: #000;
+    transform: scale(1.02);
+    z-index: 5;
+    box-shadow: 0 0 40px rgba(0,255,255,0.15);
+  }
+  .word-cell .word {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    word-break: break-word;
+  }
+  .word-cell .word.long { font-size: 16px; }
+  .word-cell .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-top: 14px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .word-cell .cat[data-cat="Archetype"] { color: var(--cyan); }
+  .word-cell .cat[data-cat="Philosophy"] { color: var(--purple); }
+  .word-cell .cat[data-cat="Concept"] { color: var(--pink); }
+  .word-cell .cat[data-cat="Slang"] { color: var(--acid); }
+  .word-cell .cat[data-cat="Element"] { color: var(--gold); }
+  .word-cell .cat[data-cat="Pioneer"] { color: #ff7733; }
+  .word-cell .cat[data-cat="Mythic"] { color: #fff; font-weight: 700; }
+  .word-cell .cat[data-cat="1/1 Legend"] { color: var(--gold); font-weight: 700; }
+  .word-cell.legend {
+    background: linear-gradient(135deg, rgba(255,209,102,0.05), rgba(170,68,255,0.05));
+    border: 1px solid rgba(255,209,102,0.2);
+  }
+  .word-cell.legend::before {
+    content: '★';
+    position: absolute;
+    top: 8px; right: 10px;
+    color: var(--gold);
+    font-size: 10px;
+  }
+
+  /* ============ RARITY ============ */
+  .rarity-stack {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .rarity-row {
+    display: grid;
+    grid-template-columns: 140px 1fr 80px;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+    transition: all 0.3s;
+  }
+  .rarity-row:hover {
+    padding-left: 12px;
+    border-color: var(--line-strong);
+  }
+  .rarity-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .rarity-name.r-mythic { color: var(--gold); font-style: italic; font-weight: 600; }
+  .rarity-name.r-legendary { color: var(--purple); font-style: italic; }
+  .rarity-name.r-epic { color: var(--pink); }
+  .rarity-name.r-rare { color: var(--cyan); }
+  .rarity-name.r-uncommon { color: var(--acid); }
+  .rarity-name.r-common { color: var(--ink-dim); }
+  .rarity-bar {
+    height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .rarity-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 0;
+  }
+  .rarity-pct {
+    font-family: var(--mono);
+    font-size: 14px;
+    text-align: right;
+    color: var(--ink);
+    letter-spacing: 1px;
+  }
+
+  /* ============ LEGENDS ============ */
+  #legends { background: var(--bg-elev); max-width: none; padding-left: 0; padding-right: 0; }
+  #legends .inner { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+  .legends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .legend-card {
+    aspect-ratio: 1;
+    position: relative;
+    border: 1px solid var(--line-strong);
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s;
+  }
+  .legend-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+  .legend-card canvas {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+  .legend-card .overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    z-index: 2;
+  }
+  .legend-card .legend-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .legend-card .legend-name {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .legend-card .legend-traits {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--ink-dim);
+    letter-spacing: 1px;
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* ============ GALLERY (previews) ============ */
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .preview-card {
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s;
+  }
+  .preview-card:hover { border-color: var(--cyan); transform: scale(1.03); }
+  .preview-card canvas { width: 100%; height: 100%; display: block; }
+  .preview-card .tag {
+    position: absolute; top: 10px; left: 10px;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.7);
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: var(--ink);
+  }
+
+  /* ============ ROADMAP ============ */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .roadmap::before {
+    content: '';
+    position: absolute;
+    top: 32px; left: 8%; right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--gold));
+    opacity: 0.3;
+    z-index: 0;
+  }
+  .phase {
+    position: relative;
+    z-index: 1;
+  }
+  .phase-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--cyan);
+    margin-bottom: 24px;
+    margin-left: 24px;
+    position: relative;
+  }
+  .phase-dot::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    opacity: 0.15;
+  }
+  .phase.completed .phase-dot { background: var(--cyan); }
+  .phase.future .phase-dot { border-color: var(--ink-faint); }
+  .phase.future .phase-dot::after { background: var(--ink-faint); }
+  .phase-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .phase-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+  .phase-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--cyan);
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+  }
+  .phase-desc {
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.6;
+  }
+
+  /* ============ FOOTER / CONNECT ============ */
+  #connect {
+    background: var(--bg-elev);
+    max-width: none;
+    padding: 120px 40px 60px;
+    border-top: 1px solid var(--line);
+  }
+  .connect-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .connect-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 48px;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+  .social-btn {
+    padding: 14px 28px;
+    border: 1px solid var(--line-strong);
+    border-radius: 100px;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .social-btn:hover {
+    background: var(--ink);
+    color: #000;
+    transform: translateY(-2px);
+  }
+  .social-btn.discord:hover { background: #5865F2; color: #fff; border-color: #5865F2; }
+  .social-btn.twitter:hover { background: var(--cyan); color: #000; border-color: var(--cyan); }
+  .footer-divider {
+    height: 1px;
+    background: var(--line);
+    margin: 60px 0 32px;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    nav { padding: 16px 20px; }
+    nav ul { display: none; }
+    section { padding: 80px 24px; }
+    .manifesto-grid { grid-template-columns: 1fr; gap: 40px; }
+    .roadmap { grid-template-columns: 1fr; gap: 40px; }
+    .roadmap::before { display: none; }
+    .rarity-row { grid-template-columns: 100px 1fr 60px; gap: 12px; }
+    .rarity-name { font-size: 18px; }
+    .hero-meta { flex-direction: column; gap: 12px; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">CRYPTO<span>·</span>LEXICON</div>
+  <ul>
+    <li><a href="#manifesto">Manifesto</a></li>
+    <li><a href="#pantheon">Pantheon</a></li>
+    <li><a href="#rarity">Rarity</a></li>
+    <li><a href="#legends">Legends</a></li>
+    <li><a href="#roadmap">Drop</a></li>
+  </ul>
+  <a href="#connect" class="mint-cta">Mint · Soon</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">A Living Dictionary of the Crypto Age</div>
+    <h1>The words that <span class="italic">built</span> a world.</h1>
+    <p class="hero-desc">
+      Crypto Lexicon is a collection of 6,666 NFTs — each one a single word from the language of the blockchain era, rendered as a luminous artifact. Archetypes, philosophy, slang, pioneers. The vocabulary, preserved on NFTs.
+    </p>
+    <div class="hero-meta">
+      <div>Supply <span>6,666</span></div>
+      <div>Chain <span>Ethereum</span></div>
+      <div>1/1 Legends <span>8</span></div>
+      <div>Categories <span>7</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">↓ Scroll to decode</div>
+</section>
+
+<!-- ============ PREVIEW ============ -->
+<section id="preview">
+  <div class="preview-inner">
+    <div class="section-label">A Glimpse</div>
+    <h2 class="section-title">A glimpse of the <em>collection.</em></h2>
+    <p class="preview-desc">
+      Each token in Crypto Lexicon is a word — pulled from the vocabulary of the on-chain age, rendered in light. Below: a small sample of what awaits.
+    </p>
+  </div>
+  <div id="preview-canvas"></div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section id="manifesto">
+  <div class="section-label">01 · Manifesto</div>
+  <h2 class="section-title">Every era leaves behind <em>a language.</em> This is ours.</h2>
+  <div class="manifesto-grid">
+    <div class="manifesto-text">
+      <p>Before the protocols, the chains, the wallets — there were words. <em>Hodl. Wagmi. Genesis. Sovereign.</em> Strange syllables passed between strangers in encrypted channels, then chanted in unison across continents.</p>
+      <p>Crypto Lexicon is a curated pantheon of <em>146 words</em> that defined this movement — sorted into seven sacred categories, each token forged with its own palette, material, geometry, and aura.</p>
+      <p>This is not a PFP. It is a relic. A word, made object, made eternal.</p>
+    </div>
+    <div class="manifesto-aside">
+      <div class="row"><span class="key">Edition</span><span class="val">6,666 tokens <em>+ 8 Limited</em></span></div>
+      <div class="row"><span class="key">Pantheon</span><span class="val">146 unique words</span></div>
+      <div class="row"><span class="key">Categories</span><span class="val">Archetype · Philosophy · Concept · Slang · Element · Pioneer · Mythic</span></div>
+      <div class="row"><span class="key">Traits</span><span class="val">17 palettes · 9 materials · 6 shapes · 6 environments · 5 pedestals</span></div>
+      <div class="row"><span class="key">Output</span><span class="val">PNG + interactive HTML</span></div>
+      <div class="row"><span class="key">Format</span><span class="val">ERC-721</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANTHEON ============ -->
+<section id="pantheon">
+  <div class="inner">
+    <div class="section-label">02 · The Lexicon</div>
+    <h2 class="section-title">146 words. <em>Seven categories.</em><br>One vocabulary.</h2>
+    <div class="filter-bar" id="filter-bar"></div>
+    <div class="words-grid" id="words-grid"></div>
+  </div>
+</section>
+
+<!-- ============ RARITY ============ -->
+<section id="rarity">
+  <div class="section-label">03 · The Rarity Codex</div>
+  <h2 class="section-title">Not all words carry <em>equal weight.</em></h2>
+  <div class="rarity-stack">
+    <div class="rarity-row">
+      <div class="rarity-name r-mythic">Mythic</div>
+      <div class="rarity-bar"><div class="rarity-bar-fill" data-pct="1" style="background:var(--gold)"></div></div>
+      <div class="rarity-pct">1%</div>
+    </div>
+    <div class="rarity-row">
+      <div class="rarity-name r-legendary">Legendary</div>
+      <div class="rarity-bar"><div class="rarity-bar-fill" data-pct="4" style="background:var(--purple)"></div></div>
+      <div class="rarity-pct">4%</div>
+    </div>
+    <div class="rarity-row">
+      <div class="rarity-name r-epic">Epic</div>
+      <div class="rarity-bar"><div class="rarity-bar-fill" data-pct="10" style="background:var(--pink)"></div></div>
+      <div class="rarity-pct">10%</div>
+    </div>
+    <div class="rarity-row">
+      <div class="rarity-name r-rare">Rare</div>
+      <div class="rarity-bar"><div class="rarity-bar-fill" data-pct="20" style="background:var(--cyan)"></div></div>
+      <div class="rarity-pct">20%</div>
+    </div>
+    <div class="rarity-row">
+      <div class="rarity-name r-uncommon">Uncommon</div>
+      <div class="rarity-bar"><div class="rarity-bar-fill" data-pct="30" style="background:var(--acid)"></div></div>
+      <div class="rarity-pct">30%</div>
+    </div>
+    <div class="rarity-row">
+      <div class="rarity-name r-common">Common</div>
+      <div class="rarity-bar"><div class="rarity-bar-fill" data-pct="35" style="background:var(--ink-dim)"></div></div>
+      <div class="rarity-pct">35%</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEGENDS ============ -->
+<section id="legends">
+  <div class="inner">
+    <div class="section-label">04 · The 1/1 Legends</div>
+    <h2 class="section-title">Eight artifacts. <em>Eight icons.</em></h2>
+    <p style="color:var(--ink-dim); font-size:17px; max-width:680px; margin-bottom:48px;">
+      Hidden within the supply are eight unique 1/1 tokens — each one named for a figure or talisman of the on-chain age. Forged with bespoke traits. Never to be repeated.
+    </p>
+    <div class="legends-grid" id="legends-grid"></div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section id="roadmap">
+  <div class="section-label">05 · The Drop</div>
+  <h2 class="section-title">From <em>genesis</em> to the chain.</h2>
+  <div class="roadmap">
+    <div class="phase completed">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Phase I</div>
+      <div class="phase-title">Inscription</div>
+      <div class="phase-date">Live</div>
+      <div class="phase-desc">Pantheon assembled. Engine forged. 146 words encoded across 7 categories with full trait distribution.</div>
+    </div>
+    <div class="phase completed">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Phase II</div>
+      <div class="phase-title">Pre-Mint</div>
+      <div class="phase-date">Open Now</div>
+      <div class="phase-desc">Whitelist & community access. Join the Discord, follow the channels, claim your seat at the genesis.</div>
+    </div>
+    <div class="phase">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Phase III</div>
+      <div class="phase-title">Mint</div>
+      <div class="phase-date">TBA</div>
+      <div class="phase-desc">6,666 tokens go live. Allowlist first, public second. Mint price and contract revealed two weeks prior.</div>
+    </div>
+    <div class="phase future">
+      <div class="phase-dot"></div>
+      <div class="phase-num">Phase IV</div>
+      <div class="phase-title">Lexicon Opens</div>
+      <div class="phase-date">Post-Mint</div>
+      <div class="phase-desc">The word engine opens to holders. Submit your own words, expand the vocabulary. The Lexicon grows — new editions, new entries, written by the community.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONNECT ============ -->
+<section id="connect">
+  <div class="connect-inner">
+    <h2 class="connect-title">Join the lexicon.</h2>
+    <div class="socials">
+      <a href="https://x.com/cryptolexiconX" target="_blank" rel="noopener" class="social-btn twitter">→ Twitter / X</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div>© 2026 · Crypto Lexicon</div>
+      <div>v1.0 · Pre-Mint Release</div>
+    </div>
+  </div>
+</section>
+
+<!-- Three.js loaded via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+// ============================================================
+// PANTHEON DATA (extracted from generator)
+// ============================================================
+const PANTHEON = [
+  // Archetype
+  { word: 'CYPHERPUNK', cat: 'Archetype' },{ word: 'BUILDER', cat: 'Archetype' },{ word: 'ARTIST', cat: 'Archetype' },{ word: 'DEGEN', cat: 'Archetype' },{ word: 'WHALE', cat: 'Archetype' },{ word: 'MINER', cat: 'Archetype' },{ word: 'MAXI', cat: 'Archetype' },{ word: 'ANON', cat: 'Archetype' },{ word: 'ORACLE', cat: 'Archetype' },{ word: 'VALIDATOR', cat: 'Archetype' },{ word: 'DEV', cat: 'Archetype' },{ word: 'TRADER', cat: 'Archetype' },{ word: 'DREAMER', cat: 'Archetype' },{ word: 'GUARDIAN', cat: 'Archetype' },{ word: 'SHAMAN', cat: 'Archetype' },{ word: 'PROPHET', cat: 'Archetype' },{ word: 'WIZARD', cat: 'Archetype' },{ word: 'NOMAD', cat: 'Archetype' },{ word: 'WARRIOR', cat: 'Archetype' },{ word: 'HUNTER', cat: 'Archetype' },{ word: 'GHOST', cat: 'Archetype' },{ word: 'PHOENIX', cat: 'Archetype' },{ word: 'ROGUE', cat: 'Archetype' },
+  // Philosophy
+  { word: 'SOVEREIGN', cat: 'Philosophy' },{ word: 'IMMUTABLE', cat: 'Philosophy' },{ word: 'TRUSTLESS', cat: 'Philosophy' },{ word: 'FREEDOM', cat: 'Philosophy' },{ word: 'TRUTH', cat: 'Philosophy' },{ word: 'CHAOS', cat: 'Philosophy' },{ word: 'ORDER', cat: 'Philosophy' },{ word: 'INFINITE', cat: 'Philosophy' },{ word: 'ETERNAL', cat: 'Philosophy' },{ word: 'ASCEND', cat: 'Philosophy' },
+  // Concept
+  { word: 'GENESIS', cat: 'Concept' },{ word: 'HALVING', cat: 'Concept' },{ word: 'MERKLE', cat: 'Concept' },{ word: 'NONCE', cat: 'Concept' },{ word: 'HASH', cat: 'Concept' },{ word: 'BLOCK', cat: 'Concept' },{ word: 'CHAIN', cat: 'Concept' },{ word: 'CONSENSUS', cat: 'Concept' },{ word: 'FORK', cat: 'Concept' },{ word: 'NODE', cat: 'Concept' },{ word: 'LEDGER', cat: 'Concept' },{ word: 'WALLET', cat: 'Concept' },{ word: 'PROTOCOL', cat: 'Concept' },{ word: 'BRIDGE', cat: 'Concept' },{ word: 'ROLLUP', cat: 'Concept' },{ word: 'SHARD', cat: 'Concept' },
+  // Slang
+  { word: 'HODL', cat: 'Slang' },{ word: 'WAGMI', cat: 'Slang' },{ word: 'NGMI', cat: 'Slang' },{ word: 'GM', cat: 'Slang' },{ word: 'GN', cat: 'Slang' },{ word: 'ALPHA', cat: 'Slang' },{ word: 'MOON', cat: 'Slang' },{ word: 'BULL', cat: 'Slang' },{ word: 'BEAR', cat: 'Slang' },{ word: 'PUMP', cat: 'Slang' },{ word: 'DUMP', cat: 'Slang' },{ word: 'FOMO', cat: 'Slang' },{ word: 'FUD', cat: 'Slang' },{ word: 'REKT', cat: 'Slang' },{ word: 'COPE', cat: 'Slang' },{ word: 'SHILL', cat: 'Slang' },{ word: 'APE', cat: 'Slang' },{ word: 'DIAMOND', cat: 'Slang' },{ word: 'PAPER', cat: 'Slang' },{ word: 'FREN', cat: 'Slang' },{ word: 'SER', cat: 'Slang' },{ word: 'BAGS', cat: 'Slang' },{ word: 'MINT', cat: 'Slang' },{ word: 'STAKE', cat: 'Slang' },{ word: 'YIELD', cat: 'Slang' },{ word: 'FLIP', cat: 'Slang' },{ word: 'SNIPE', cat: 'Slang' },
+  // Element
+  { word: 'FIRE', cat: 'Element' },{ word: 'ICE', cat: 'Element' },{ word: 'VOID', cat: 'Element' },{ word: 'NOVA', cat: 'Element' },{ word: 'STORM', cat: 'Element' },{ word: 'NEON', cat: 'Element' },{ word: 'PLASMA', cat: 'Element' },{ word: 'CRYSTAL', cat: 'Element' },{ word: 'AURORA', cat: 'Element' },{ word: 'THUNDER', cat: 'Element' },{ word: 'COSMOS', cat: 'Element' },{ word: 'NEBULA', cat: 'Element' },
+  // Pioneer
+  { word: 'SATOSHI', cat: 'Pioneer' },{ word: 'NAKAMOTO', cat: 'Pioneer' },{ word: 'FINNEY', cat: 'Pioneer' },{ word: 'CYPHER', cat: 'Pioneer' },
+  // Mythic
+  { word: 'WHITEPAPER', cat: 'Mythic' },{ word: 'PRIVATE KEY', cat: 'Mythic' },{ word: 'ZERO DAY', cat: 'Mythic' },{ word: 'SEED PHRASE', cat: 'Mythic' },{ word: 'COLD STORAGE', cat: 'Mythic' },
+  // 1/1 Legends
+  { word: 'TMA420', cat: '1/1 Legend' },{ word: 'ADAM', cat: '1/1 Legend' },{ word: 'COZOMO', cat: '1/1 Legend' },{ word: 'Crypto Lexicon', cat: '1/1 Legend' },{ word: 'NORM', cat: '1/1 Legend' },{ word: 'HOWDY', cat: '1/1 Legend' },{ word: 'MUNDOS', cat: '1/1 Legend' },{ word: 'PAK', cat: '1/1 Legend' }
+];
+
+const CATEGORIES = ['All', 'Archetype', 'Philosophy', 'Concept', 'Slang', 'Element', 'Pioneer', 'Mythic', '1/1 Legend'];
+
+// ============================================================
+// FILTER BAR + WORDS GRID
+// ============================================================
+const filterBar = document.getElementById('filter-bar');
+const wordsGrid = document.getElementById('words-grid');
+let activeFilter = 'All';
+
+function countCat(cat) {
+  return cat === 'All' ? PANTHEON.length : PANTHEON.filter(w => w.cat === cat).length;
+}
+
+function renderFilters() {
+  filterBar.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-chip' + (activeFilter === cat ? ' active' : '');
+    btn.innerHTML = `${cat}<span class="count">${countCat(cat)}</span>`;
+    btn.onclick = () => { activeFilter = cat; renderFilters(); renderWords(); };
+    filterBar.appendChild(btn);
+  });
+}
+
+function renderWords() {
+  wordsGrid.innerHTML = '';
+  const list = activeFilter === 'All' ? PANTHEON : PANTHEON.filter(w => w.cat === activeFilter);
+  list.forEach(w => {
+    const cell = document.createElement('div');
+    cell.className = 'word-cell' + (w.cat === '1/1 Legend' ? ' legend' : '');
+    const wordClass = w.word.length > 10 ? 'word long' : 'word';
+    cell.innerHTML = `
+      <div class="${wordClass}">${w.word}</div>
+      <div class="meta">
+        <span class="cat" data-cat="${w.cat}">${w.cat}</span>
+      </div>
+    `;
+    wordsGrid.appendChild(cell);
+  });
+}
+
+renderFilters();
+renderWords();
+
+// ============================================================
+// RARITY BARS (animate on scroll)
+// ============================================================
+const rarityObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.rarity-bar-fill').forEach(b => {
+        b.style.width = b.dataset.pct + '%';
+      });
+      rarityObserver.disconnect();
+    }
+  });
+}, { threshold: 0.3 });
+rarityObserver.observe(document.getElementById('rarity'));
+
+// ============================================================
+// PREVIEW 3D SCENE — floating words from the pantheon
+// ============================================================
+(function initPreview() {
+  const container = document.getElementById('preview-canvas');
+  const scene = new THREE.Scene();
+  scene.background = null;
+  scene.fog = new THREE.FogExp2(0x050507, 0.04);
+
+  const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.set(0, 0, 10);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  // Far-background particle dust
+  const particleCount = 250;
+  const positions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    positions[i*3]   = (Math.random() - 0.5) * 40;
+    positions[i*3+1] = (Math.random() - 0.5) * 25;
+    positions[i*3+2] = (Math.random() - 0.5) * 25 - 5;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const pMat = new THREE.PointsMaterial({ color: 0x66ddff, size: 0.035, transparent: true, opacity: 0.5 });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  // Words drawn from the pantheon — mix of categories
+  const HERO_WORDS = [
+    { text: 'CYPHERPUNK',  color: '#ff66cc' },
+    { text: 'HODL',        color: '#00ffff' },
+    { text: 'SOVEREIGN',   color: '#aa44ff' },
+    { text: 'GENESIS',     color: '#ff66cc' },
+    { text: 'WAGMI',       color: '#66ff88' },
+    { text: 'SATOSHI',     color: '#ffd166' },
+    { text: 'IMMUTABLE',   color: '#00ffff' },
+    { text: 'WHALE',       color: '#ff66cc' },
+    { text: 'ALPHA',       color: '#aaff00' },
+    { text: 'ETERNAL',     color: '#aa44ff' },
+    { text: 'GM',          color: '#ffd166' },
+    { text: 'ORACLE',      color: '#00ffff' },
+    { text: 'TRUTH',       color: '#ff66cc' },
+    { text: 'CHAIN',       color: '#66ddff' },
+    { text: 'WIZARD',      color: '#aa44ff' },
+    { text: 'MOON',        color: '#ffd166' },
+    { text: 'ANON',        color: '#ff66cc' },
+    { text: 'PHOENIX',     color: '#ff8855' }
+  ];
+
+  // Build glowing text texture for each word
+  function makeWordTexture(text, color) {
+    const canvas = document.createElement('canvas');
+    const fontSize = 128;
+    canvas.width = 1024;
+    canvas.height = 256;
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // glow
+    ctx.font = `600 ${fontSize}px "Fraunces", Georgia, serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 28;
+    ctx.fillStyle = color;
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+    // second pass for extra bloom
+    ctx.shadowBlur = 14;
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+    // crisp core in white
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = '#ffffff';
+    ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.needsUpdate = true;
+    tex.anisotropy = 4;
+    return tex;
+  }
+
+  const sprites = [];
+  HERO_WORDS.forEach((w, i) => {
+    const tex = makeWordTexture(w.text, w.color);
+    const mat = new THREE.SpriteMaterial({
+      map: tex,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      opacity: 0.92
+    });
+    const sprite = new THREE.Sprite(mat);
+
+    // distribute words on an orbital sphere
+    const phi = Math.acos(-1 + (2 * i) / HERO_WORDS.length);
+    const theta = Math.sqrt(HERO_WORDS.length * Math.PI) * phi;
+    const r = 4 + Math.random() * 1.5;
+
+    sprite.userData.basePos = new THREE.Vector3(
+      r * Math.cos(theta) * Math.sin(phi),
+      r * Math.sin(theta) * Math.sin(phi) * 0.55,
+      r * Math.cos(phi)
+    );
+    sprite.userData.floatPhase = Math.random() * Math.PI * 2;
+    sprite.userData.floatSpeed = 0.4 + Math.random() * 0.5;
+    sprite.userData.driftAmp  = 0.15 + Math.random() * 0.2;
+    sprite.userData.scaleBase = 1.5 + Math.random() * 0.6;
+
+    const s = sprite.userData.scaleBase;
+    sprite.scale.set(s * 4, s, 1); // aspect for 1024x256
+    sprite.position.copy(sprite.userData.basePos);
+    scene.add(sprite);
+    sprites.push(sprite);
+  });
+
+  // group rotation container — sprites are top-level so we rotate the whole scene visually via camera orbit
+  function onResize() {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  }
+  window.addEventListener('resize', onResize);
+
+  // mouse parallax
+  let targetX = 0, targetY = 0;
+  window.addEventListener('mousemove', e => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * 0.8;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+  });
+
+  let t = 0;
+  let camAngle = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.006;
+
+    // orbit camera slowly around origin so the word cloud appears to rotate
+    camAngle += 0.0018;
+    const camRadius = 10;
+    camera.position.x = Math.sin(camAngle) * camRadius + targetX * 1.5;
+    camera.position.z = Math.cos(camAngle) * camRadius;
+    camera.position.y = targetY * 1.2;
+    camera.lookAt(0, 0, 0);
+
+    // float + breathe each word
+    sprites.forEach(s => {
+      const u = s.userData;
+      const drift = Math.sin(t * u.floatSpeed + u.floatPhase) * u.driftAmp;
+      s.position.x = u.basePos.x + Math.cos(u.floatPhase + t * 0.3) * 0.1;
+      s.position.y = u.basePos.y + drift;
+      s.position.z = u.basePos.z + Math.sin(u.floatPhase + t * 0.4) * 0.1;
+
+      // gentle scale pulse
+      const pulse = 1 + Math.sin(t * 1.2 + u.floatPhase) * 0.04;
+      const sc = u.scaleBase * pulse;
+      s.scale.set(sc * 4, sc, 1);
+
+      // depth-based opacity for atmospheric falloff
+      const dist = s.position.distanceTo(camera.position);
+      s.material.opacity = Math.max(0.35, Math.min(0.95, 1.4 - dist * 0.08));
+    });
+
+    particles.rotation.y += 0.0006;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+// ============================================================
+// LEGENDS GALLERY — 8 mini-canvases
+// ============================================================
+const LEGENDS = [
+  { word: 'TMA420',         color: '#aaff00', accent: '#ddff66', palette: 'Acid Green' },
+  { word: 'ADAM',           color: '#ffd166', accent: '#fff3a8', palette: 'Pure Gold' },
+  { word: 'COZOMO',         color: '#ffffff', accent: '#00ffff', palette: 'Iridescent' },
+  { word: 'Crypto Lexicon', color: '#cc88ff', accent: '#aa44ff', palette: 'Royal Purple' },
+  { word: 'NORM',           color: '#00ffff', accent: '#66ffff', palette: 'Cyber Cyan' },
+  { word: 'HOWDY',          color: '#ff66cc', accent: '#ff1493', palette: 'Hot Pink' },
+  { word: 'MUNDOS',         color: '#ffaa44', accent: '#ff7700', palette: 'Solar Flare' },
+  { word: 'PAK',            color: '#ffd166', accent: '#fff3a8', palette: 'Pure Gold' }
+];
+
+function makeLegendCard(legend, idx) {
+  const card = document.createElement('div');
+  card.className = 'legend-card';
+  const canvas = document.createElement('canvas');
+  card.appendChild(canvas);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+  const hiddenName = legend.word.split('').map(ch => ch === ' ' ? ' ' : '?').join('');
+  overlay.innerHTML = `
+    <div class="legend-num">№ ${6667 + idx} · 1/1</div>
+    <div class="legend-name">${hiddenName}</div>
+    <div class="legend-traits">Revealed at mint</div>
+  `;
+  card.appendChild(overlay);
+  return { card, canvas, legend };
+}
+
+function makeNeonWordTexture(text, color, accent) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1024;
+  canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // word may be short (PAK) or longer (Crypto Lexicon) — auto-fit
+  const isMulti = text.includes(' ');
+  const lines = isMulti ? text.split(' ') : [text];
+  const maxLen = Math.max(...lines.map(l => l.length));
+  let fontSize = maxLen > 8 ? 140 : (maxLen > 5 ? 180 : 220);
+
+  ctx.font = `600 ${fontSize}px "Fraunces", Georgia, serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const lineH = fontSize * 1.0;
+  const startY = cy - ((lines.length - 1) * lineH) / 2;
+
+  // outer glow
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 60;
+  ctx.fillStyle = color;
+  lines.forEach((ln, i) => ctx.fillText(ln, cx, startY + i * lineH));
+
+  // inner bloom
+  ctx.shadowBlur = 30;
+  ctx.fillStyle = accent;
+  lines.forEach((ln, i) => ctx.fillText(ln, cx, startY + i * lineH));
+
+  // crisp white core
+  ctx.shadowBlur = 0;
+  ctx.fillStyle = '#ffffff';
+  lines.forEach((ln, i) => ctx.fillText(ln, cx, startY + i * lineH));
+
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.needsUpdate = true;
+  tex.anisotropy = 4;
+  return tex;
+}
+
+function initLegendScene(canvas, legend) {
+  const w = canvas.parentElement.clientWidth;
+  const h = canvas.parentElement.clientHeight;
+  canvas.width = w; canvas.height = h;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x080810);
+
+  const cam = new THREE.PerspectiveCamera(45, w/h, 0.1, 100);
+  cam.position.set(0, 0, 5);
+
+  const r = new THREE.WebGLRenderer({ canvas, antialias: true });
+  r.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  r.setSize(w, h, false);
+
+  // ambient backdrop particles tinted with legend color
+  const pCount = 60;
+  const pPos = new Float32Array(pCount * 3);
+  for (let i = 0; i < pCount; i++) {
+    pPos[i*3]   = (Math.random() - 0.5) * 8;
+    pPos[i*3+1] = (Math.random() - 0.5) * 6;
+    pPos[i*3+2] = (Math.random() - 0.5) * 6 - 2;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  const pMat = new THREE.PointsMaterial({
+    color: new THREE.Color(legend.color),
+    size: 0.04, transparent: true, opacity: 0.5
+  });
+  const particles = new THREE.Points(pGeo, pMat);
+  scene.add(particles);
+
+  // the word itself as a glowing sprite — hidden until reveal
+  const hidden = legend.word.split('').map(ch => ch === ' ' ? ' ' : '?').join('');
+  const tex = makeNeonWordTexture(hidden, legend.color, legend.accent);
+  const mat = new THREE.SpriteMaterial({
+    map: tex,
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const sprite = new THREE.Sprite(mat);
+  sprite.scale.set(4.5, 2.25, 1);
+  scene.add(sprite);
+
+  // soft glow halo behind word
+  const haloCanvas = document.createElement('canvas');
+  haloCanvas.width = 256; haloCanvas.height = 256;
+  const hctx = haloCanvas.getContext('2d');
+  const grad = hctx.createRadialGradient(128, 128, 0, 128, 128, 128);
+  grad.addColorStop(0, legend.color + 'aa');
+  grad.addColorStop(0.4, legend.color + '33');
+  grad.addColorStop(1, 'transparent');
+  hctx.fillStyle = grad;
+  hctx.fillRect(0, 0, 256, 256);
+  const haloTex = new THREE.CanvasTexture(haloCanvas);
+  const halo = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: haloTex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, opacity: 0.6
+  }));
+  halo.scale.set(6, 6, 1);
+  halo.position.z = -0.5;
+  scene.add(halo);
+
+  let t = 0;
+  function loop() {
+    requestAnimationFrame(loop);
+    t += 0.01;
+    sprite.position.y = Math.sin(t) * 0.08;
+    const pulse = 1 + Math.sin(t * 1.5) * 0.03;
+    sprite.scale.set(4.5 * pulse, 2.25 * pulse, 1);
+    halo.material.opacity = 0.5 + Math.sin(t * 1.2) * 0.15;
+    particles.rotation.y += 0.001;
+    particles.rotation.x = Math.sin(t * 0.3) * 0.1;
+    r.render(scene, cam);
+  }
+  loop();
+}
+
+const legendsGrid = document.getElementById('legends-grid');
+const legendItems = LEGENDS.map((l, i) => makeLegendCard(l, i));
+legendItems.forEach(({ card }) => legendsGrid.appendChild(card));
+
+// init scenes after DOM has dimensions
+requestAnimationFrame(() => {
+  legendItems.forEach(({ canvas, legend }) => initLegendScene(canvas, legend));
+});
+
+</script>
+</body>
+</html>
